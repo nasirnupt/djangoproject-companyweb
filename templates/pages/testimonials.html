@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    | Testimonials
+{% endblock title %}
+    
+
+
+{% block content %}
+    
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Testimonials</h2>
+          <ol>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="breadcrumb-item active">Testimonials</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+
+        <div class="row">
+
+            
+            {% for tsml in testimonials %}
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="testimonial-item">
+                    <img src="{{tsml.image.url}}" class="testimonial-img" alt="">
+                    <h3>{{tsml.name}}</h3>
+                    <h4>{{tsml.title}}</h4>
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        {{tsml.description}}
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    </div>
+                </div>
+            {% endfor %}
+                
+
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+{% endblock content %}
+    

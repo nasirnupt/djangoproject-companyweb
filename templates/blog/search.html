@@ -1,0 +1,82 @@
+{% extends 'base.html' %} 
+
+
+{% block title %}
+    | Search Results
+{% endblock title %}
+
+
+{% block content %}
+
+ <!-- ======= Breadcrumbs ======= -->
+ <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Blog</h2>
+        <ol>
+          <li class="breadcrumb-item"><a href="{% url 'blog' %}">Blog</a></li>
+          <li class="breadcrumb-item active">Search Result</li>
+        </ol>
+      </div>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+<!-- Search Results -->
+
+<section id="blog" class="blog">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-8 entries">
+          
+            {% if blogs %}
+    
+                {% for blog in blogs %}
+                    <article class="entry" data-aos="fade-up">
+
+                        <div class="entry-img">
+                        <img src="{{blog.image.url}}" alt="" class="img-fluid">
+                        </div>
+
+                        <h2 class="entry-title">
+                        <a href="{% url 'singleblog' %}">{{blog.title}}</a>
+                        </h2>
+
+                        <div class="entry-meta">
+                        <ul>
+                            <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="{% url 'singleblog' %}">{{blog.name}}</a></li>
+                            <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="{% url 'singleblog' %}"><time datetime="2020-01-01">{{blog.publish_date}}</time></a></li>
+                            <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="{% url 'singleblog' %}">{{blog.comment}} Comments</a></li>
+                        </ul>
+                        </div>
+
+                        <div class="entry-content">
+                        <p>
+                            {{blog.description}}
+                        </p>
+                        <div class="read-more">
+                            <a href="{% url 'singleblog' %}">Read More</a>
+                        </div>
+                        </div>
+
+                    </article><!-- End blog entry -->
+                {% endfor %}
+                
+
+                {% else %}
+
+                <div class="col-md-12">
+                    <p>No Blogs Available</p>
+                </div>
+                
+            {% endif %}
+              
+
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock content %}

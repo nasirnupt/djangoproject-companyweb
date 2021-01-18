@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+    | Login Your Account
+{% endblock title %}
+    
+
+{% block content %}
+     <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="text-center">Login Your Account</h2>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <br>
+
+    <!-- Alerts  -->
+    {% include 'partials/_alerts.html' %}
+
+    <!-- Login Section  -->
+
+    <section id="contact" class="contact">
+        <div class="container">
+          <!-- form validation -->
+          <div class="row mt-5 justify-content-center" data-aos="fade-up">
+            <div class="col-lg-4">
+                <h4 class="text-center">Login Your Account</h4>
+              <form action="{% url 'login' %}" method="POST" role="form">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <input type="text" name="username" class="form-control required" id="name" placeholder="Enter Your Name"/>
+                    <div class="validate"></div>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control required" name="password" id="password" placeholder="Password"/>
+                    <div class="validate"></div>
+                  </div> 
+                  <small>Forgot My <a href="{% url 'forgot' %}">Password!</a></small>
+                  
+                <div class="text-center"><br>
+                    <button class="btn btn-success btn-block" type="submit">Login</button>
+                </div>
+              </form><br>
+              <small>Don't have My Account <a href="{% url 'register' %}">Registration Now!</a></small>
+            </div>
+  
+          </div>
+  
+        </div>
+      </section><!-- End Contact Section -->
+
+{% endblock content %}
+    
